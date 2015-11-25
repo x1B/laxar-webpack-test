@@ -1,0 +1,43 @@
+{
+  "name": "systemjs-test",
+  "version": "0.1.0-pre",
+  "description": "",
+  "license": "MIT",
+  "scripts": {
+    "test": "grunt test --force",
+    "prepublish": "bower install && grunt optimize",
+    "dist": "grunt dist",
+    "start": "grunt start",
+    "optimize": "grunt optimize"
+  },
+  "devDependencies": {
+    "bower": "~1.6.3",
+    "grunt": "~0.4.4",
+    "grunt-cli": "~0.1.13",
+    "grunt-laxar": "~1.1.0"
+  },
+  "jspm": {
+    "dependencies": {
+      "angular": "npm:angular@^1.4.8",
+      "angular-route": "npm:angular-route@^1.4.8",
+      "angular-sanitize": "npm:angular-sanitize@^1.4.8",
+      "json": "npm:systemjs-plugin-json@^0.1.0",
+      "laxar": "npm:laxar@^1.1.0",
+      "laxar-patterns": "npm:laxar-patterns@^1.1.2",
+      "laxar-uikit": "github:LaxarJS/dist-laxar-uikit@^1.1.0"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    },
+    "overrides": {
+      "npm:laxar@1.1.0": {
+        "format": "amd"
+      },
+      "npm:laxar-patterns@1.1.2": {
+        "format": "amd"
+      }
+    }
+  }
+}
