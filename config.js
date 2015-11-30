@@ -23,9 +23,9 @@ System.config({
   },
 
   meta: {
-    "laxar": {
+   "laxar-patterns": {
       "format": "amd"
-    }
+   }
   },
 
   map: {
@@ -36,9 +36,15 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.34",
     "core-js": "npm:core-js@1.2.6",
     "json": "npm:systemjs-plugin-json@0.1.0",
-    "laxar": "npm:laxar@1.1.0",
+    "laxar": "includes/lib/laxar/laxar-dist",
+   //  "laxar": "npm:laxar@1.1.0",
     "laxar-patterns": "npm:laxar-patterns@1.1.2",
     "laxar-uikit": "github:LaxarJS/dist-laxar-uikit@1.1.0",
+    "includes/lib/laxar/laxar-dist": {
+      "angular": "npm:angular@1.4.8",
+      "angular-route": "npm:angular-route@1.4.8",
+      "angular-sanitize": "npm:angular-sanitize@1.4.8"
+   },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -74,7 +80,7 @@ System.config({
     },
     "npm:laxar-patterns@1.1.2": {
       "json-patch": "npm:fast-json-patch@0.5.4",
-      "laxar": "npm:laxar@1.1.0"
+      "laxar": "includes/lib/laxar/laxar-dist"
     },
     "npm:laxar@1.1.0": {
       "jjv": "npm:jjv@1.0.2",
