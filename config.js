@@ -23,9 +23,9 @@ System.config({
   },
 
   meta: {
-   "laxar-patterns": {
+    "laxar-patterns": {
       "format": "amd"
-   }
+    }
   },
 
   map: {
@@ -35,16 +35,11 @@ System.config({
     "babel": "npm:babel-core@5.8.34",
     "babel-runtime": "npm:babel-runtime@5.8.34",
     "core-js": "npm:core-js@1.2.6",
+    "fast-json-patch": "npm:fast-json-patch@0.5.6",
     "json": "npm:systemjs-plugin-json@0.1.0",
     "laxar": "includes/lib/laxar/laxar-dist",
-   //  "laxar": "npm:laxar@1.1.0",
-    "laxar-patterns": "npm:laxar-patterns@1.1.2",
+    "laxar-patterns": "includes/lib/laxar-patterns/laxar-patterns-dist",
     "laxar-uikit": "github:LaxarJS/dist-laxar-uikit@1.1.0",
-    "includes/lib/laxar/laxar-dist": {
-      "angular": "npm:angular@1.4.8",
-      "angular-route": "npm:angular-route@1.4.8",
-      "angular-sanitize": "npm:angular-sanitize@1.4.8"
-   },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -56,6 +51,11 @@ System.config({
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
+    },
+    "includes/lib/laxar/laxar-dist": {
+      "angular": "npm:angular@1.4.8",
+      "angular-route": "npm:angular-route@1.4.8",
+      "angular-sanitize": "npm:angular-sanitize@1.4.8"
     },
     "npm:angular@1.4.8": {
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -74,17 +74,6 @@ System.config({
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
-    },
-    "npm:jjv@1.0.2": {
-      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
-    },
-    "npm:laxar-patterns@1.1.2": {
-      "json-patch": "npm:fast-json-patch@0.5.4",
-      "laxar": "includes/lib/laxar/laxar-dist"
-    },
-    "npm:laxar@1.1.0": {
-      "jjv": "npm:jjv@1.0.2",
-      "jjve": "npm:jjve@0.5.1"
     },
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
