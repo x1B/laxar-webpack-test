@@ -39,7 +39,7 @@ System.config({
     "json": "npm:systemjs-plugin-json@0.1.0",
     "laxar": "includes/lib/laxar/laxar-dist",
     "laxar-patterns": "includes/lib/laxar-patterns/laxar-patterns-dist",
-    "laxar-uikit": "github:LaxarJS/dist-laxar-uikit@1.1.0",
+    "laxar-uikit": "includes/lib/laxar-uikit/laxar-uikit-dist",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
