@@ -18,7 +18,22 @@
 
       "right": [
          {
+            "layout": "one-column",
+            "id": "testLayout"
+         }
+      ],
+      "testLayout.content": [
+         {
             "widget": "example/my-viewer-widget",
+            "features": {
+               "document": {
+                  "resource": "explanation"
+               }
+            },
+            "enabled": false
+         },
+         {
+            "widget": "example-plain/plain-my-viewer-widget",
             "features": {
                "document": {
                   "resource": "explanation"

@@ -2,34 +2,33 @@
  * Copyright 2015 Alexander Wilden
  * Released under the MIT license
  */
-define( [
-   'angular'
-], function( ng ) {
-   'use strict';
+import { module } from 'angular';
 
-   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-   Controller.$inject = [ '$scope', 'axEventBus', 'axFlowService' ];
+Controller.$inject = [ '$scope', 'axEventBus', 'axFlowService' ];
 
-   function Controller( $scope, eventBus, flowService ) {
-      // navigation through plain old links...
-      $scope.links = $scope.features.links.map( function( link ) {
-         return {
-            htmlLabel: link.htmlLabel,
-            href: flowService.constructAnchor( link.target )
-         };
-      } );
+function Controller( $scope, eventBus, flowService ) {
 
-      // ...or programmatically by using events (form submission etc.)
-      $scope.handleClick = function( button ) {
-         eventBus.publish( 'navigateRequest.' + button.target, {
-            target: button.target
-         } );
+   // navigation through plain old links...
+   $scope.links = $scope.features.links.map( link => {
+      return {
+         htmlLabel: link.htmlLabel,
+         href: flowService.constructAnchor( link.target )
       };
-   }
+   } );
 
-   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+   // ...or programmatically by using events (form submission etc.)
+   $scope.handleClick = button => {
+      eventBus.publish( 'navigateRequest.' + button.target, {
+         target: button.target
+      } );
+   };
+   
+}
 
-   return ng.module( 'myNavigationWidget', [] ).controller( 'MyNavigationWidgetController', Controller );
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-} );
+export const name = module( 'myNavigationWidget', [] )
+   .controller( 'MyNavigationWidgetController', Controller )
+   .name;

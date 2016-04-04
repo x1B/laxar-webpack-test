@@ -30,12 +30,20 @@ module.exports = function(grunt) {
       },
       watch: {
          'laxar-reload': {
-            'files': [ 'includes/lib/laxar*/lib/**/*.js' ],
+            'files': [
+               'includes/lib/laxar*/lib/**/*.js',
+               'includes/lib/laxar-angular-adapter/laxar-angular-adapter.js'
+            ],
             'event': [
                'changed'
             ]
          }
-      }
+      },
+      connect: {
+         options: {
+            protocol: 'http'
+         }
+      },
 
    } );
 
