@@ -11,10 +11,10 @@
     "optimize": "grunt optimize"
   },
   "devDependencies": {
-    "bower": "~1.6.3",
-    "grunt": "~0.4.4",
-    "grunt-cli": "~0.1.13",
-    "grunt-laxar": "~1.1.0",
+    "bower": "^1.7.9",
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-laxar": "^1.1.0",
     "jspm": "^0.16.29",
     "jspm-server": "^1.0.1"
   },
