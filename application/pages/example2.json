@@ -7,7 +7,7 @@
 
       "left": [
          {
-            "widget": "example/my-editor-widget",
+            "widget": "example-plain/plain-my-editor-widget",
             "features": {
                "document": {
                   "resource": "explanation"
@@ -24,7 +24,7 @@
       ],
       "testLayout.content": [
          {
-            "widget": "example/my-viewer-widget",
+            "widget": "example-plain/plain-my-viewer-widget",
             "features": {
                "document": {
                   "resource": "explanation"
@@ -44,7 +44,7 @@
 
       "footer": [
          {
-            "widget": "example/my-navigation-widget",
+            "widget": "example-plain/plain-my-navigation-widget",
             "features": {
                "links": [
                   {

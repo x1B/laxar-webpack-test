@@ -1,0 +1,27 @@
+{
+   "name": "plain-my-editor-widget",
+   "description": "A simple document editor",
+
+   "integration": {
+      "technology": "plain",
+      "type": "widget"
+   },
+
+   "features": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "properties": {
+
+         "document": {
+            "type": "object",
+            "required": [ "resource" ],
+            "properties": {
+               "resource": {
+                  "type": "string"
+               }
+            }
+         }
+
+      }
+   }
+}
