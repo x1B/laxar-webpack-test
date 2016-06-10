@@ -9,16 +9,16 @@
       <p>This widget publishes events whenever its document resource is changed.</p>
       <form class="form-horizontal">
          <div class="form-group">
-            <label ax-for="'title'" class="col-lg-2 control-label">Title</label>
+            <label data-for="title" class="col-lg-2 control-label">Title</label>
             <div class="col-lg-10">
-               <input ax-id="'title'" ng-model="model.htmlTitle"
+               <input data-id="title" ng-model="model.htmlTitle"
                       type="text" class="form-control">
             </div>
          </div>
          <div class="form-group">
-            <label ax-for="'text'" class="col-lg-2 control-label">Body</label>
+            <label data-for="text" class="col-lg-2 control-label">Body</label>
             <div class="col-lg-10">
-               <textarea ax-id="'text'" ng-model="model.htmlText" class="form-control" rows="6"></textarea>
+               <textarea data-id="text" ng-model="model.htmlText" class="form-control" rows="6"></textarea>
             </div>
          </div>
       </form>

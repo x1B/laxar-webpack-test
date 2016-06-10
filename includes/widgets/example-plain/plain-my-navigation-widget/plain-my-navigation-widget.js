@@ -3,7 +3,7 @@
  * Released under the MIT license
  */
 export const name = 'plain-my-navigation-widget';
-export const injections = [ 'axEventBus', 'axFeatures', 'flowService' ];
+export const injections = [ 'axEventBus', 'axFeatures', 'axFlowService' ];
 export function create( axEventBus, axFeatures, axFlowService ) {
 
    return {

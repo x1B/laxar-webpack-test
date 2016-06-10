@@ -3,8 +3,8 @@
  * Released under the MIT license
  */
 export const name = 'plain-my-editor-widget';
-export const injections = [ 'axEventBus', 'axFeatures' ];
-export function create( axEventBus, axFeatures ) {
+export const injections = [ 'axContext', 'axEventBus', 'axFeatures' ];
+export function create( axContext, axEventBus, axFeatures ) {
 
    const initialModel = {
       htmlTitle: 'A document resource',
@@ -24,6 +24,7 @@ export function create( axEventBus, axFeatures ) {
       renderTo( element ) {
          element.querySelector( 'input' ).value = initialModel.htmlTitle;
          element.querySelector( 'textarea' ).value = initialModel.htmlText;
+         renderIdsAndFors( element );
 
          element.querySelector( 'input' ).addEventListener( 'input', () => {
             publishUpdate( 'htmlTitle', element.querySelector( 'input' ).value );
@@ -40,5 +41,15 @@ export function create( axEventBus, axFeatures ) {
          }
       }
    };
+
+   function renderIdsAndFors( element ) {
+      Array.from( element.querySelectorAll( '[data-id]' ) ).forEach( idElement => {
+         const localId = idElement.dataset.id;
+         idElement.setAttribute( 'id', axContext.id( localId ) );
+         Array.from( element.querySelectorAll( `[data-for="${localId}"]` ) ).forEach( forElement => {
+            forElement.setAttribute( 'for', axContext.id( localId ) );
+         } );
+      } );
+   }
 
 }
