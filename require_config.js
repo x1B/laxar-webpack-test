@@ -27,7 +27,7 @@ var require = {
       'laxar-path-flow': '../application/flow/flow.json',
       'laxar-path-widgets': '../includes/widgets',
       'laxar-path-themes': '../includes/themes',
-      'laxar-path-default-theme': 'laxar-uikit/dist/themes/default.theme',
+      'laxar-path-default-theme': '../includes/lib/laxar-uikit/themes/default.theme',
 
       // LaxarJS application modules (contents are generated):
       'laxar-application-dependencies': '../var/flows/main/dependencies',

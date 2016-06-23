@@ -26,7 +26,7 @@ window.laxar = ( function() {
       useMergedCss: mode === 'PRODUCTION',
       eventBusTimeoutMs: (mode === 'PRODUCTION' ? 120 : 10) * 1000,
       paths: {
-         defaultTheme: 'bower_components/laxar-uikit/dist/themes/default.theme'
+         defaultTheme: 'includes/lib/laxar-uikit/themes/default.theme'
       }
    };
 
