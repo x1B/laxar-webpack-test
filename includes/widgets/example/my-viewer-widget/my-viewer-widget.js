@@ -1,29 +1,16 @@
 /**
- * Copyright 2015 Alexander Wilden
+ * Copyright 2016 aixigo AG
  * Released under the MIT license
  */
-define( [
-   'angular',
-   'laxar-patterns'
-], function( ng, patterns ) {
-   'use strict';
+import { module } from 'angular';
+import { json } from 'laxar-patterns';
 
-   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+Controller.$inject = [ '$scope', 'axEventBus' ];
 
-   Controller.$inject = [ '$scope', 'axEventBus' ];
+function Controller( $scope, eventBus ) {
+   const { resource } = $scope.features.document;
+   eventBus.subscribe( `didReplace.${resource}`, ( { data } ) => $scope.model = data );
+   eventBus.subscribe( `didUpdate.${resource}`, ( { patches } ) => json.applyPatch( $scope.model, patches ) );
+}
 
-   function Controller( $scope, eventBus ) {
-      var resource = $scope.features.document.resource;
-      eventBus.subscribe( 'didReplace.' + resource, function( event ) {
-         $scope.model = event.data;
-      } );
-      eventBus.subscribe( 'didUpdate.' + resource, function( event ) {
-         patterns.json.applyPatch( $scope.model, event.patches );
-      } );
-   }
-
-   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-   return ng.module( 'myViewerWidget', [] ).controller( 'MyViewerWidgetController', Controller );
-
-} );
+export const name = module( 'myViewerWidget', [] ).controller( 'MyViewerWidgetController', Controller ).name;

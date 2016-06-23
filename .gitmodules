@@ -1,0 +1,25 @@
+[submodule "includes/lib/laxar"]
+	path = includes/lib/laxar
+	url = https://github.com/LaxarJS/laxar.git
+[submodule "includes/lib/laxar-patterns"]
+	path = includes/lib/laxar-patterns
+	url = https://github.com/LaxarJS/laxar-patterns.git
+[submodule "includes/lib/laxar-uikit"]
+	path = includes/lib/laxar-uikit
+	url = https://github.com/LaxarJS/laxar-uikit.git
+[submodule "includes/lib/laxar-jasmine-runner"]
+	path = includes/lib/laxar-jasmine-runner
+	#url = git@github.com:LaxarJS/laxar-jasmine-runner.git
+	url = https://github.com/LaxarJS/laxar-jasmine-runner.git
+[submodule "includes/lib/laxar-mocks"]
+	path = includes/lib/laxar-mocks
+	url = https://github.com/LaxarJS/laxar-mocks.git
+[submodule "includes/lib/laxar-angular-adapter"]
+	path = includes/lib/laxar-angular-adapter
+	url = https://github.com/LaxarJS/laxar-angular-adapter.git
+[submodule "includes/controls/laxar-html-attribute-control"]
+	path = includes/controls/laxar-html-attribute-control
+	url = https://github.com/LaxarJS/laxar-html-attribute-control.git
+[submodule "includes/controls/laxar-i18n-control"]
+	path = includes/controls/laxar-i18n-control
+	url = https://github.com/LaxarJS/laxar-i18n-control.git

@@ -6,17 +6,29 @@ window.laxar = ( function() {
    var mode = document.querySelector( 'script[' + modeAttribute + ']' ).getAttribute( modeAttribute );
 
    return {
-      name: 'systemjs-test',
+      name: 'laxar-webpack-test',
       description: '',
       theme: 'default',
+
+      logging: {
+         threshold: 'TRACE'
+      },
 
       widgets: {
          // put your widgets' global ax.configuration.get( ... ) options here
       },
 
+      profiling: {
+         enabled: false
+      },
+
       useEmbeddedFileListings: mode === 'PRODUCTION',
       useMergedCss: mode === 'PRODUCTION',
-      eventBusTimeoutMs: (mode === 'PRODUCTION' ? 120 : 10) * 1000
+      eventBusTimeoutMs: (mode === 'PRODUCTION' ? 120 : 10) * 1000,
+      paths: {
+         // TODO: this is okay with bower, but when using jspm the path gets awkward
+         defaultTheme: 'bower_components/laxar-uikit/dist/themes/default.theme'
+      }
    };
 
 } )();

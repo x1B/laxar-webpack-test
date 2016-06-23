@@ -4,48 +4,102 @@
  */
 /*global module,__dirname,__filename */
 module.exports = function(grunt) {
-  'use strict';
+   'use strict';
 
-  var serverPort = 8002;
-  var testPort = 1000 + serverPort;
-  var liveReloadPort = 30000 + serverPort;
+   var serverPort = 8015;
+   var testPort = 1000 + serverPort;
+   var liveReloadPort = 30000 + serverPort;
 
-  grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
+   var webpackConfig = require('./webpack.config');
 
-    'laxar-configure': {
-      options: {
-        flows: [
-          {
-            target: 'main',
-            src: 'application/flow/flow.json'
+   grunt.initConfig( {
+      pkg: grunt.file.readJSON('package.json'),
+
+      'laxar-configure': {
+         options: {
+            flows: [
+               {
+                  target: 'main',
+                  src: 'application/flow/flow.json'
+               }
+            ],
+            ports: {
+               develop: serverPort,
+               test: testPort,
+               livereload: liveReloadPort
+            }
+         }
+      },
+      watch: {
+         'webpack': {
+            files: [
+               'includes/lib/laxar*/lib/**/*.js',
+               'includes/lib/laxar-angular-adapter/laxar-angular-adapter.js',
+               'includes/widgets/**/*.js'
+            ],
+            tasks: [
+               'webpack:main-develop'
+            ],
+				options: {
+					spawn: false,
+            }
+         }
+      },
+      connect: {
+         options: {
+            protocol: 'http'
+         }
+      },
+
+      webpack: {
+         'main-develop':
+            webpackConfig,
+         'main-dist':
+            Object.assign( {}, webpackConfig, {
+               output: webpackConfig._distOutput,
+               plugins: webpackConfig._distPlugins
+            } )
+      },
+
+      'webpack-dev-server': {
+			options: {
+				webpack: webpackConfig,
+				publicPath: "/" + webpackConfig.output.publicPath
+			},
+			start: {
+				keepAlive: true,
+				webpack: {
+					devtool: "eval",
+					debug: true
+				}
+         }
+      },
+      concurrent: {
+          main: {
+             tasks: ['laxar-develop-no-watch', 'webpack-dev-server:start'],
+             options: {
+                  logConcurrentOutput: true
+             }
           }
-        ],
-        ports: {
-          develop: serverPort,
-          test: testPort,
-          livereload: liveReloadPort
-        }
       }
-    }
+   } );
 
-  });
+   ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+   grunt.loadNpmTasks('grunt-concurrent');
+   grunt.loadNpmTasks('grunt-laxar');
+   grunt.loadNpmTasks('grunt-webpack');
 
-  grunt.loadNpmTasks('grunt-laxar');
+   // basic aliases
+   grunt.registerTask('test', ['laxar-test']);
+   grunt.registerTask('build', ['laxar-build']);
+   grunt.registerTask('develop', ['concurrent:main']);
+   grunt.registerTask('info', ['laxar-info']);
+   grunt.registerTask('dist', ['laxar-configure', 'laxar-dist-css', 'webpack:main-dist']);
 
-  // basic aliases
-  grunt.registerTask('test', ['laxar-test']);
-  grunt.registerTask('build', ['laxar-build']);
-  grunt.registerTask('dist', ['laxar-dist']);
-  grunt.registerTask('develop', ['laxar-develop']);
-  grunt.registerTask('info', ['laxar-info']);
+   // additional (possibly) more intuitive aliases
+   grunt.registerTask('optimize', ['dist']);
+   grunt.registerTask('start', ['develop']);
 
-  // additional (possibly) more intuitive aliases
-  grunt.registerTask('optimize', ['laxar-dist']);
-  grunt.registerTask('start', ['laxar-develop']);
-  grunt.registerTask('start-no-watch', ['laxar-develop-no-watch']);
-
-  grunt.registerTask('default', ['build', 'test']);
+   grunt.registerTask('default', ['build', 'test']);
 };

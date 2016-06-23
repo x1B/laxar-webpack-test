@@ -1,9 +1,10 @@
 {
   "generator-laxarjs": {
-    "author": "Alexander Wilden",
-    "homepage": "",
+    "author": "aixigo AG",
+    "homepage": "http://laxarjs.org",
     "licenses": [
       "MIT"
-    ]
+    ],
+    "laxarIntegrationTechnology": "plain"
   }
 }

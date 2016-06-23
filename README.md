@@ -1,35 +1,39 @@
-# systemjs-test
+# laxar-webpack-test
 
-> Testing LaxarJS with SystemJS and JSPM
+> Incubation chamber for a LaxarJS v2 project template using webpack+babel for ES2015
 
-First install all required node modules:
+This project serves as a development testbed for LaxarJS v2 and the associated tooling.
+Also, it will be the basis for creating a Yeoman template for LaxarJS v2 projects.
+
+
+### Instructions
+
 ```sh
+git clone https://github.com/x1b/laxar-webpack-test
+cd laxar-webpack-test
 npm install
 ```
 
-At this stage `grunt optimize` will fail, since it is based on the old RequireJS stack. For now this  can simply be ignored.
+To run the development server(s):
 
-Then install jspm:
 ```sh
-npm install -g jspm
-```
-You can alternatively install jspm locally instead, which is recommended by the developers.
-
-Now install all jspm dependencies:
-```sh
-jspm install
+npm start
 ```
 
-Then run the grunt build task to ensure that all LaxarJS application dependencies are built correctly.
-```sh
-grunt build
-```
+To create an optimized version:
 
-Now either start the server or make a production built using jspm:
 ```sh
-jspm bundle-sfx init.js out.js
+npm run optimize
 ```
 
 
+### How it works
 
-.... and see it fail, since plugin syntax from SystemJS isn't compatible to the AMD plugin syntax ;-)
+The grunt configuration uses `grunt-laxar` to generate a list of widget dependencies, and a resource bundle, like in LaxarJS v1.
+Additionally webpack is used to load and bundle the JavaScript modules, and to reload them during development
+
+
+### Known limitations
+
+ - Currently, the `require_config.js` is still needed to provide paths for `grunt-laxar`.
+ - With this setup, changes to JSON/HTML/CSS assets are not picked up automatically (only webpack is used for watching to avoid double refresh problems).

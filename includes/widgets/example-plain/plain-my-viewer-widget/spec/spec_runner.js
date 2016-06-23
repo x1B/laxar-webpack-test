@@ -5,11 +5,11 @@
 ( function( global ) {
    'use strict';
    global.laxarSpec = {
-      title: 'MyViewerWidget Specification',
+      title: 'plain-my-viewer-widget Specification',
       tests: [
-         'my-viewer-widget.spec'
+         'plain-my-viewer-widget.spec'
       ],
       testRunner: 'laxar-mocks',
       jasmineMajorVersion: 2
-   };
+  };
 } )( this );
