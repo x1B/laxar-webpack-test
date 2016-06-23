@@ -10,7 +10,7 @@ import { object } from 'laxar';
 Controller.$inject = [ '$scope', 'axEventBus' ];
 
 const defaults = {
-   htmlTitle: 'A document resource',
+   htmlTitle: 'A document resource!',
    htmlText: 'This resource is shared by two widgets using the LaxarJS <em>Event-Bus</em>.' +
              '\n\n<b>Try editing</b> the resource contents!'
 };

@@ -7,7 +7,7 @@ export const injections = [ 'axContext', 'axEventBus', 'axFeatures' ];
 export function create( axContext, axEventBus, axFeatures ) {
 
    const initialModel = {
-      htmlTitle: 'A document resource',
+      htmlTitle: 'A document resource___',
       htmlText: 'This resource is shared by two widgets using the LaxarJS <em>Event-Bus</em>.' +
       '\n\n<b>Try editing</b> the resource contents!'
    };

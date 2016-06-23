@@ -43,8 +43,9 @@ module.exports = {
       alias: {
          // uncomment to test the dist version of laxar or the git submodule
          //'laxar': path.resolve( './includes/lib/laxar/laxar-dist' ),
-         //'laxar': path.resolve( './includes/lib/laxar/laxar' ),
          'page': path.resolve( './bower_components/page/page' ),
+         'fast-json-patch': path.resolve( './bower_components/fast-json-patch/src/json-patch' ),
+         'laxar': path.resolve( './includes/lib/laxar/laxar' ),
          'laxar-application': path.resolve( __dirname ),
          'laxar-application-dependencies': './var/flows/main/dependencies',
       }

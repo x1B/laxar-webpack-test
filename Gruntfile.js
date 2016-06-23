@@ -10,6 +10,8 @@ module.exports = function(grunt) {
    var testPort = 1000 + serverPort;
    var liveReloadPort = 30000 + serverPort;
 
+   var webpackConfig = require('./webpack.config');
+
    grunt.initConfig( {
       pkg: grunt.file.readJSON('package.json'),
 
@@ -29,14 +31,18 @@ module.exports = function(grunt) {
          }
       },
       watch: {
-         'laxar-reload': {
-            'files': [
+         'webpack': {
+            files: [
                'includes/lib/laxar*/lib/**/*.js',
-               'includes/lib/laxar-angular-adapter/laxar-angular-adapter.js'
+               'includes/lib/laxar-angular-adapter/laxar-angular-adapter.js',
+               'includes/widgets/**/*.js'
             ],
-            'event': [
-               'changed'
-            ]
+            tasks: [
+               'webpack:main-develop'
+            ],
+				options: {
+					spawn: false,
+            }
          }
       },
       connect: {
@@ -45,23 +51,51 @@ module.exports = function(grunt) {
          }
       },
 
+      webpack: {
+         'main-develop': webpackConfig,
+         'main-dist': webpackConfig
+      },
+
+
+
+      'webpack-dev-server': {
+			options: {
+				webpack: webpackConfig,
+				publicPath: "/" + webpackConfig.output.publicPath
+			},
+			start: {
+				keepAlive: true,
+				webpack: {
+					devtool: "eval",
+					debug: true
+				}
+         }
+      },
+      concurrent: {
+          main: {
+             tasks: ['laxar-develop-no-watch', 'webpack-dev-server'],
+             options: {
+                  logConcurrentOutput: true
+             }
+          }
+      }
    } );
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+   grunt.loadNpmTasks('grunt-concurrent');
    grunt.loadNpmTasks('grunt-laxar');
+   grunt.loadNpmTasks('grunt-webpack');
 
    // basic aliases
    grunt.registerTask('test', ['laxar-test']);
    grunt.registerTask('build', ['laxar-build']);
-   grunt.registerTask('dist', ['laxar-dist']);
-   grunt.registerTask('develop', ['laxar-develop']);
+   grunt.registerTask('develop', ['concurrent:main']);
    grunt.registerTask('info', ['laxar-info']);
 
    // additional (possibly) more intuitive aliases
-   grunt.registerTask('optimize', ['laxar-dist']);
-   grunt.registerTask('start', ['laxar-develop']);
-   grunt.registerTask('start-no-watch', ['laxar-develop-no-watch']);
+   grunt.registerTask('optimize', ['laxar-configure', 'laxar-dist-css', 'webpack:main-dist']);
+   grunt.registerTask('start', ['concurrent:develop']);
 
    grunt.registerTask('default', ['build', 'test']);
 };

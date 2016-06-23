@@ -12,20 +12,7 @@
 
    <script data-ax-application-mode="DEBUG" src="application/application.js"></script>
 
-   <script src="jspm_packages/system.src.js"></script>
-   <script src="system.config.js"></script>
-   <script>
-      System.import( 'systemjs-debugger' )
-         .then( function( systemJSDebugger ) {
-            System.import( 'init.js' )
-            .catch( function( err ) {
-               console.error( err );
-               // log imports on errors
-               systemJSDebugger.logImports();
-            } );
-            // log imports on errors
-            window.onerror = systemJSDebugger.logImports;
-         } )
-   </script>
+   <script src="var/flows/main/dist/app.bundle.js"></script>
+   <script src="http://localhost:8080/webpack-dev-server.js"></script>
 </body>
 </html>
