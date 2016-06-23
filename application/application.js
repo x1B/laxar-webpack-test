@@ -6,7 +6,7 @@ window.laxar = ( function() {
    var mode = document.querySelector( 'script[' + modeAttribute + ']' ).getAttribute( modeAttribute );
 
    return {
-      name: 'systemjs-test',
+      name: 'laxar-webpack-test',
       description: '',
       theme: 'default',
 

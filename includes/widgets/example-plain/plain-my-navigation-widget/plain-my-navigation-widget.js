@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Alexander Wilden
+ * Copyright 2016 aixigo AG
  * Released under the MIT license
  */
 export const name = 'plain-my-navigation-widget';

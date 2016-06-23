@@ -1,7 +1,7 @@
 {
-  "name": "systemjs-test",
+  "name": "laxar-webpack-test",
   "version": "0.1.0-pre",
-  "description": "",
+  "description": "Incubation chamber for a LaxarJS v2 project template using webpack+babel for ES2015",
   "license": "MIT",
   "scripts": {
     "test": "grunt test --force",

@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Alexander Wilden
+ * Copyright 2016 aixigo AG
  * Released under the MIT license
  */
 import ng from 'angular';

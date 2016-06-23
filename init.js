@@ -1,12 +1,12 @@
 /**
- * Copyright 2015 Alexander Wilden
+ * Copyright 2015 aixigo AG
  * Released under the MIT license
  */
 import { bootstrap } from 'laxar';
 import applicationDependencies from 'laxar-application-dependencies';
 import resources from 'laxar-application/var/flows/main/resources.json';
 // import * as angularAdapter from 'laxar-angular-adapter';
-//import 'whatwg-fetch';
+// import 'whatwg-fetch';
 
 window.laxar.fileListings = {
   application: resources,
