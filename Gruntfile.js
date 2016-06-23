@@ -2,15 +2,15 @@
  * Copyright 2015 Alexander Wilden
  * Released under the MIT license
  */
-/*global module,__dirname,__filename */
+ /* global module require */
 module.exports = function(grunt) {
    'use strict';
 
-   var serverPort = 8015;
-   var testPort = 1000 + serverPort;
-   var liveReloadPort = 30000 + serverPort;
+   const serverPort = 8101;
+   const testPort = 1000 + serverPort;
+   const liveReloadPort = 30000 + serverPort;
 
-   var webpackConfig = require('./webpack.config');
+   const webpackConfig = require('./webpack.config');
 
    grunt.initConfig( {
       pkg: grunt.file.readJSON('package.json'),
@@ -27,21 +27,6 @@ module.exports = function(grunt) {
                develop: serverPort,
                test: testPort,
                livereload: liveReloadPort
-            }
-         }
-      },
-      watch: {
-         'webpack': {
-            files: [
-               'includes/lib/laxar*/lib/**/*.js',
-               'includes/lib/laxar-angular-adapter/laxar-angular-adapter.js',
-               'includes/widgets/**/*.js'
-            ],
-            tasks: [
-               'webpack:main-develop'
-            ],
-				options: {
-					spawn: false,
             }
          }
       },
@@ -64,7 +49,8 @@ module.exports = function(grunt) {
       'webpack-dev-server': {
 			options: {
 				webpack: webpackConfig,
-				publicPath: "/" + webpackConfig.output.publicPath
+				publicPath: webpackConfig.output.publicPath,
+            port: 8100
 			},
 			start: {
 				keepAlive: true,
@@ -92,7 +78,7 @@ module.exports = function(grunt) {
 
    // basic aliases
    grunt.registerTask('test', ['laxar-test']);
-   grunt.registerTask('build', ['laxar-build']);
+   grunt.registerTask('build', ['laxar-build', 'webpack:main-develop']);
    grunt.registerTask('develop', ['concurrent:main']);
    grunt.registerTask('info', ['laxar-info']);
    grunt.registerTask('dist', ['laxar-configure', 'laxar-dist-css', 'webpack:main-dist']);

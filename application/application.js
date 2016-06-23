@@ -26,7 +26,6 @@ window.laxar = ( function() {
       useMergedCss: mode === 'PRODUCTION',
       eventBusTimeoutMs: (mode === 'PRODUCTION' ? 120 : 10) * 1000,
       paths: {
-         // TODO: this is okay with bower, but when using jspm the path gets awkward
          defaultTheme: 'bower_components/laxar-uikit/dist/themes/default.theme'
       }
    };

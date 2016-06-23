@@ -9,7 +9,7 @@ Also, it will be the basis for creating a Yeoman template for LaxarJS v2 project
 ### Instructions
 
 ```sh
-git clone https://github.com/x1b/laxar-webpack-test
+git clone --recursive https://github.com/x1b/laxar-webpack-test
 cd laxar-webpack-test
 npm install
 ```
@@ -19,6 +19,9 @@ To run the development server(s):
 ```sh
 npm start
 ```
+
+Visit the application at [localhost:8100](http://localhost:8100).
+
 
 To create an optimized version:
 

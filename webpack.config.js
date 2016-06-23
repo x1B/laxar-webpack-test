@@ -7,7 +7,7 @@ module.exports = {
    entry: './init.js',
    output: {
       path: path.resolve( './var/flows/main/dist' ),
-      publicPath: 'var/flows/main/dist/',
+      publicPath: '/var/flows/main/dist/',
       filename: 'app.bundle.js'
    },
    _distOutput: {
@@ -42,6 +42,7 @@ module.exports = {
          }
       ]
    },
+
    resolve: {
       root: [
          path.resolve( './includes/lib/' ),
