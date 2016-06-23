@@ -7,12 +7,19 @@ module.exports = {
    entry: './init.js',
    output: {
       path: path.resolve( './var/flows/main/dist' ),
+      publicPath: 'var/flows/main/dist/',
       filename: 'app.bundle.js'
+   },
+   _distOutput: {
+      path: path.resolve( './var/flows/main/dist' ),
+      filename: 'app.bundle.min.js'
    },
    plugins: [
       new webpack.SourceMapDevToolPlugin( {
          filename: 'app.bundle.js.map'
       } ),
+   ],
+   _distPlugins: [
       new webpack.optimize.UglifyJsPlugin( {
          compress: {
             warnings: false

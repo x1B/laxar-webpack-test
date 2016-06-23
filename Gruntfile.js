@@ -52,11 +52,14 @@ module.exports = function(grunt) {
       },
 
       webpack: {
-         'main-develop': webpackConfig,
-         'main-dist': webpackConfig
+         'main-develop':
+            webpackConfig,
+         'main-dist':
+            Object.assign( {}, webpackConfig, {
+               output: webpackConfig._distOutput,
+               plugins: webpackConfig._distPlugins
+            } )
       },
-
-
 
       'webpack-dev-server': {
 			options: {
@@ -73,7 +76,7 @@ module.exports = function(grunt) {
       },
       concurrent: {
           main: {
-             tasks: ['laxar-develop-no-watch', 'webpack-dev-server'],
+             tasks: ['laxar-develop-no-watch', 'webpack-dev-server:start'],
              options: {
                   logConcurrentOutput: true
              }
@@ -92,10 +95,11 @@ module.exports = function(grunt) {
    grunt.registerTask('build', ['laxar-build']);
    grunt.registerTask('develop', ['concurrent:main']);
    grunt.registerTask('info', ['laxar-info']);
+   grunt.registerTask('dist', ['laxar-configure', 'laxar-dist-css', 'webpack:main-dist']);
 
    // additional (possibly) more intuitive aliases
-   grunt.registerTask('optimize', ['laxar-configure', 'laxar-dist-css', 'webpack:main-dist']);
-   grunt.registerTask('start', ['concurrent:develop']);
+   grunt.registerTask('optimize', ['dist']);
+   grunt.registerTask('start', ['develop']);
 
    grunt.registerTask('default', ['build', 'test']);
 };
