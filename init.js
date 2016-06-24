@@ -17,5 +17,6 @@ window.laxar.fileListings = {
 bootstrap( document.querySelector( '[data-ax-page]' ), {
    // widgetAdapters: [ angularAdapter ],
    widgetAdapters: [],
-   widgetModules: applicationDependencies
+   widgetModules: applicationDependencies,
+   configuration: window.laxar
 } );

@@ -61,11 +61,14 @@ module.exports = function(grunt) {
          }
       },
       concurrent: {
-          main: {
-             tasks: ['laxar-develop-no-watch', 'webpack-dev-server:start'],
-             options: {
-                  logConcurrentOutput: true
-             }
+         'develop-main': {
+            tasks: [
+               'laxar-develop-no-watch',
+               'webpack-dev-server:start'
+            ],
+            options: {
+               logConcurrentOutput: true
+            }
           }
       }
    } );
@@ -79,7 +82,7 @@ module.exports = function(grunt) {
    // basic aliases
    grunt.registerTask('test', ['laxar-test']);
    grunt.registerTask('build', ['laxar-build', 'webpack:main-develop']);
-   grunt.registerTask('develop', ['concurrent:main']);
+   grunt.registerTask('develop', ['concurrent:develop-main']);
    grunt.registerTask('info', ['laxar-info']);
    grunt.registerTask('dist', ['laxar-configure', 'laxar-dist-css', 'webpack:main-dist']);
 

@@ -1,53 +1,37 @@
 /* eslint-env node */
 
 const path = require( 'path' );
+const JasmineWebpackPlugin = require('jasmine-webpack-plugin');
 const webpack = require( 'webpack' );
 
-module.exports = {
-   entry: './init.js',
 
+module.exports = {
+   entry: './includes/widgets/example-plain/plain-my-editor-widget/spec/spec-runner.js',
    output: {
-      path: path.resolve( './var/flows/main/dist' ),
-      publicPath: '/var/flows/main/dist/',
-      filename: 'app.bundle.js'
+      path: path.resolve( './includes/widgets/example-plain/plain-my-editor-widget/spec/' ),
+      filename: 'spec-runner.bundle.js'
    },
    plugins: [
       new webpack.SourceMapDevToolPlugin( {
          filename: 'app.bundle.js.map'
-      } ),
-   ],
-
-   _distOutput: {
-      path: path.resolve( './var/flows/main/dist' ),
-      filename: 'app.bundle.min.js'
-   },
-   _distPlugins: [
-      new webpack.SourceMapDevToolPlugin( {
-         filename: 'app.bundle.min.js.map'
-      } ),
-      new webpack.optimize.UglifyJsPlugin( {
-         compress: {
-            warnings: false
-         },
-         sourceMap: true
       } )
    ],
-
    module: {
       noParse: /bower_components\/page\/page\.js/,
       loaders: [
          {
             test: /\.js$/,
-            exclude: /(node_modules|bower_components|spec)/,
+            exclude: /(node_modules|bower_components)/,
             loader: 'babel-loader'
          },
          {
             test: /\.json$/,
-            exclude: /(node_modules|bower_components|spec)/,
+            exclude: /(node_modules|bower_components)/,
             loader: 'json-loader'
          }
       ]
    },
+
    resolve: {
       root: [
          path.resolve( './includes/lib/' ),

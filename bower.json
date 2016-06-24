@@ -6,7 +6,8 @@
    "dependencies": {
       "laxar": "./includes/lib/laxar",
       "laxar-patterns": "./includes/lib/laxar-patterns",
-      "laxar-uikit": "./includes/lib/laxar-uikit"
+      "laxar-uikit": "./includes/lib/laxar-uikit",
+      "laxar-mocks": "1.0.0"
    },
    "devDependencies": {
       "jasmine": "1.3.x",
