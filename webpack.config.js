@@ -54,11 +54,11 @@ module.exports = {
          path.resolve( './bower_components' )
       ],
       alias: {
-         // uncomment to test the dist version of laxar or the git submodule
-         //'laxar': path.resolve( './includes/lib/laxar/laxar-dist' ),
          'page': path.resolve( './bower_components/page/page' ),
          'fast-json-patch': path.resolve( './bower_components/fast-json-patch/src/json-patch' ),
          'laxar': path.resolve( './includes/lib/laxar/laxar' ),
+         // uncomment to test the dist version of laxar or the git submodule
+         // 'laxar': path.resolve( './includes/lib/laxar/dist/laxar' ),
          'laxar-application': path.resolve( __dirname ),
          'laxar-application-dependencies': './var/flows/main/dependencies',
       }
